@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
-
+import ShopPage from './components/shop/shop.component';
 
 const HatsPage = () => (
   <div>
@@ -45,7 +45,7 @@ function App() {
         <Route path='/sneakers' component={ SneakersPage }/> 
         <Route path='/womens' component={ WomensPage }/>  
         <Route path='/mens' component={ MensPage }/> 
-        
+        <Route path='/shop' component={ ShopPage }/> 
       </Switch>
       
     </div>
