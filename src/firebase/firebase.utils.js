@@ -12,6 +12,7 @@ const config = {
   appId: "1:95207162700:web:97b5a3e5667d321ce845e9",
   measurementId: "G-JEZQLJNY39",
 };
+firebase.initializeApp(config);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -19,8 +20,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   const userRef = firestore.doc(`users/${userAuth.uid}`);
 
   const snapShot = await userRef.get();
-
-  console.log(snapShot);
 
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
@@ -37,20 +36,14 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       console.log("error creating user", error.message);
     }
   }
+  return userRef;
 };
 
-firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-// export const signInWithGoogle = async () => {
-//   try {
 const provider = new firebase.auth.GoogleAuthProvider();
-//     await firebase.auth().signInWithPopup(provider);
-//   } catch (error) {
-//     alert(error.message);
-//   }
-// };
+
 provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export default firebase;
