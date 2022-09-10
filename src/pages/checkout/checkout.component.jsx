@@ -5,7 +5,7 @@ import StripeCheckoutButton from "../../components/stripe-button/stripe-button.c
 import { CartContext } from "../../providers/cart/cart.provider";
 import "./checkout.styles.scss";
 
-const CheckoutPage = ({ total }) => {
+const CheckoutPage = () => {
   const { cartItems, cartTotal } = useContext(CartContext);
   return (
     <div className="checkout-page">
@@ -29,7 +29,7 @@ const CheckoutPage = ({ total }) => {
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <div className="total">TOTAL: N {total} .00</div>
+      <div className="total">TOTAL: N {cartTotal} .00</div>
       <div className="test-warning">
         *Please confirm payment*
         <br />

@@ -17,18 +17,24 @@ const Header = () => {
 
   return (
     <div className="header">
-      <Link to="/">
+      <Link className="logo-container" to="/">
         <Logo className="logo" />
       </Link>
       <div className="options">
-        <Link to="/shop">SHOP</Link>
-        <Link to="/contact">CONTACT</Link>
+        <Link className="option" to="/shop">
+          SHOP
+        </Link>
+        <Link className="option" to="/contact">
+          CONTACT
+        </Link>
         {currentUser ? (
-          <Link as="div" onClick={() => auth.signOut()}>
+          <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
-          </Link>
+          </div>
         ) : (
-          <Link to="/signin">SIGN IN</Link>
+          <Link className="option" to="/signin">
+            SIGN IN
+          </Link>
         )}
         <CartIcon />
       </div>
